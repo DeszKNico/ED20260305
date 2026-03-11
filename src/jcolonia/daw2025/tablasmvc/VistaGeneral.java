@@ -43,33 +43,44 @@ public class VistaGeneral {
 	}
 
 	/**
-	 * Muestra un título principal con una línea de separación.
+	 * Muestra un título principal similar a un H1.
+	 * Se imprime en mayúsculas y con una línea superior e inferior.
 	 * 
 	 * @param texto título a mostrar
 	 */
 	public static void mostrarTitulo1(String texto) {
-		System.out.println();
-		System.out.println(texto);
-		for (int i = 0; i < texto.length(); i++) {
-			System.out.print("=");
-		}
-		System.out.println();
-	}
+	    String t = texto.toUpperCase();
+	    int longitud = t.length() + 4;
 
+	    System.out.println();
+
+	    for (int i = 0; i < longitud; i++) {
+	        System.out.print("=");
+	    }
+	    System.out.println();
+
+	    System.out.printf("  %s%n", t);
+
+	    for (int i = 0; i < longitud; i++) {
+	        System.out.print("=");
+	    }
+	    System.out.println();
+	}
+	
 	/**
-	 * Muestra un subtítulo con línea inferior.
+	 * Muestra un subtítulo similar a un H2.
 	 * 
 	 * @param texto subtítulo a mostrar
 	 */
 	public static void mostrarTitulo2(String texto) {
-		System.out.println();
-		System.out.println(texto);
-		for (int i = 0; i < texto.length(); i++) {
-			System.out.print("-");
-		}
-		System.out.println();
-	}
+	    System.out.println();
+	    System.out.printf("%s%n", texto);
 
+	    for (int i = 0; i < texto.length(); i++) {
+	        System.out.print("-");
+	    }
+	    System.out.println();
+	}
 	/**
 	 * Muestra todas las opciones del menú numeradas. También añade la opción 0 para
 	 * salir.
