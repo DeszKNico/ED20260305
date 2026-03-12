@@ -43,44 +43,33 @@ public class VistaGeneral {
 	}
 
 	/**
-	 * Muestra un título principal similar a un H1.
-	 * Se imprime en mayúsculas y con una línea superior e inferior.
+	 * Muestra un título principal con una línea de separación.
 	 * 
 	 * @param texto título a mostrar
 	 */
 	public static void mostrarTitulo1(String texto) {
-	    String t = texto.toUpperCase();
-	    int longitud = t.length() + 4;
-
-	    System.out.println();
-
-	    for (int i = 0; i < longitud; i++) {
-	        System.out.print("=");
-	    }
-	    System.out.println();
-
-	    System.out.printf("  %s%n", t);
-
-	    for (int i = 0; i < longitud; i++) {
-	        System.out.print("=");
-	    }
-	    System.out.println();
+		System.out.println();
+		System.out.println(texto);
+		for (int i = 0; i < texto.length(); i++) {
+			System.out.print("=");
+		}
+		System.out.println();
 	}
-	
+
 	/**
-	 * Muestra un subtítulo similar a un H2.
+	 * Muestra un subtítulo con línea inferior.
 	 * 
 	 * @param texto subtítulo a mostrar
 	 */
 	public static void mostrarTitulo2(String texto) {
-	    System.out.println();
-	    System.out.printf("%s%n", texto);
-
-	    for (int i = 0; i < texto.length(); i++) {
-	        System.out.print("-");
-	    }
-	    System.out.println();
+		System.out.println();
+		System.out.println(texto);
+		for (int i = 0; i < texto.length(); i++) {
+			System.out.print("-");
+		}
+		System.out.println();
 	}
+
 	/**
 	 * Muestra todas las opciones del menú numeradas. También añade la opción 0 para
 	 * salir.
@@ -166,29 +155,29 @@ public class VistaGeneral {
 	 * @return número entero introducido por el usuario
 	 */
 	public static int pedirNumero(String mensaje) {
-		int numero;
+	    int numero;
 
-		System.out.print(mensaje + ": ");
+	    System.out.print(String.format("%s: ", mensaje));
 
-		while (!scIn.hasNextInt()) {
-			System.out.println("Número no válido.");
-			scIn.next();
-			System.out.print(mensaje + ": ");
-		}
+	    while (!scIn.hasNextInt()) {
+	        System.out.println("Número no válido.");
+	        scIn.next();
+	        System.out.print(String.format("%s: ", mensaje));
+	    }
 
-		numero = scIn.nextInt();
-		return numero;
+	    numero = scIn.nextInt();
+	    return numero;
 	}
 
 	/**
 	 * Pausa la ejecución hasta que el usuario pulse ENTER.
 	 * 
-	 * @param texto mensaje que se muestra antes de la pausa
+	 * 
 	 */
-	public static void pausa(String texto) {
-		System.out.println(texto);
-		scIn.nextLine();
-		scIn.nextLine();
+	public static void pausa() {
+	    System.out.println("Pulse ENTER para continuar...");
+	    scIn.nextLine(); // consume la línea pendiente
+	    scIn.nextLine(); // espera al usuario
 	}
 
 	/**
@@ -198,7 +187,7 @@ public class VistaGeneral {
 	 * @return true si responde 's', false si responde 'n'
 	 */
 	public static boolean pedirConfirmacion(String texto) {
-		System.out.print(texto + " (s/n): ");
+		System.out.print(String.format("%s (s/n): ", texto));
 		String respuesta = scIn.next();
 
 		return respuesta.equalsIgnoreCase("s");
